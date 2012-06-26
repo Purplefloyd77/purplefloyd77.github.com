@@ -21,13 +21,13 @@ module Jekyll
         Dir.foreach(dir) do |image|
           image_path = File.join(dir, image)
           if File.file?(image_path) and image.chars.first != "." and image.downcase().end_with?(*$image_extensions)
-            # generate 100x80 px
-            dest_path = File.join(dest, "100x80-#{image}")
+            # generate 200x80 px
+            dest_path = File.join(dest, "200x80-#{image}")
             if !File.file?(dest_path)
               begin
                 m_image = ImageList.new(image_path)
-                m_image.resize_to_fit!(100, 80)
-                puts "Writing thumbnail to #{dest}/100x80-#{image}"
+                m_image.resize_to_fit!(200, 80)
+                puts "Writing thumbnail to #{dest}/200x80-#{image}"
                 m_image.write(dest_path)
               rescue
                 puts "error"
@@ -40,7 +40,7 @@ module Jekyll
         # generate banners
         site.posts.each do |post|
           if post.data.has_key?('images') and !post.data['images'].first().nil?
-            image = post.data['images'].first['image']
+            image = post.data['images'].first['file']
             image_path = File.join(dir, image)
             dest_path = File.join(dest, "banner-#{image}")
             if File.file?(image_path) and image.chars.first != "." and image.downcase().end_with?(*$image_extensions) and !File.file?(dest_path)

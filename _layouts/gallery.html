@@ -6,19 +6,42 @@
     </head>
     <body>
         {% include header.html %}
-        <section class="container">
+        <section class="container" id="viewer">
+            <header class="row">
+                <h2 class="span6 offset3">{{ page.title }}</h2>
+            </header>
+            <section class="row">
 
+            </section>
+            <section class="row">
+                <div id="thumbnailer" class="span6 offset3">
+                    <ul>
+                        {% for image in page.images %}
+                        <li>
+                            <img src="/{{ site.thumbnails_dir }}/200x80-{{ image.file }}" alt="{{ image.name }}" />
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
         </section>
-        <section class="container" id="thumbnailer">
+        <section class="container">
+            
             <ul>
-                {% for image in page.images %}
-                <li>
-                    {{ image.name }}
-                </li>
-                {% endfor %}
+                
             </ul>
         </section>
         {% include footer.html %}
         {% include doc-foot.html %}
+        <script type="text/javascript" src="//s3.amazonaws.com/pierremoreau/js/jquery.jcarousel.min.js"></script>
+        <script type="text/javascript">
+        <!--
+            $(function() {
+                $('#thumbnailer').jcarousel({
+                    itemFallbackDimension: 80
+                });
+            });
+        -->
+        </script>
     </body>
 </html>
