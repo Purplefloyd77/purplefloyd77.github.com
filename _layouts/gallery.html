@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ page.title }} - {{ site.title }}</title>
+        {% include doc-head.html %}
+    </head>
+    <body>
+        {% include header.html %}
+        <section class="container">
+
+        </section>
+        <section class="container" id="thumbnailer">
+            <ul>
+                {% for image in page.images %}
+                <li>
+                    {{ image.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% include footer.html %}
+        {% include doc-foot.html %}
+    </body>
+</html>

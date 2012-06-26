@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ page.title }} - {{ site.title }}</title>
+        {% include doc-head.html %}
+    </head>
+    <body>
+        {% include header.html %}
+        <section class="container">
+            {% for post in site.categories[page.section] %}
+                <a href="{{ post.url }}" class="row">
+                    <article class="span12">
+                        <header class="row">
+                            <h2 class="span12">{{ post.title }}</h2>
+                        </header>
+                        <section class="row">
+                            <img src="{{ post.banner }}" />
+                        </section>
+                    </article>
+                </a>
+            {% endfor %}
+        </section>
+        {% include footer.html %}
+        {% include doc-foot.html %}
+    </body>
+</html>
