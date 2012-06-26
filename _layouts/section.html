@@ -10,12 +10,14 @@
             {% for post in site.categories[page.section] %}
                 <a href="{{ post.url }}" class="row">
                     <article class="span12">
+                        <section class="row">
+                            <div class="span12 hbanner">
+                                <img src="/{{ site.thumbnails_dir }}/banner-{{ post.images.first.image }}" />
+                            </div>
+                        </section>
                         <header class="row">
                             <h2 class="span12">{{ post.title }}</h2>
                         </header>
-                        <section class="row">
-                            <img src="{{ post.banner }}" />
-                        </section>
                     </article>
                 </a>
             {% endfor %}
